@@ -149,7 +149,7 @@ var hotstart = function hotstart(conf,app) {
       r_cache[handle].loaded = false;
       r_cache[handle].load(handle);
       if (isServer) {
-        server._events.request = r_cache[handle].exports;
+        req._events.request = r_cache[handle].exports;
       } else {
         req.socket.server._events.request = r_cache[handle].exports;
       }
