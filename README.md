@@ -14,8 +14,8 @@ var hotstart = require('hotstart');
 app.use(hotstart({
   dir: __dirname,  //must
   handle: '/app.js',  //def the app.js
-  ignore:['/public','/node_modules'], //def ignore dir.  if view cache ===false, then will auto push view path .
-  suffix:['.js'],  //def suffix Filter.  if view cache ===true, then will auto push view engine .
+  ignore:['/public','/node_modules'], //def ignore dir.  if view cache false, then will push view path .
+  suffix:['.js'],  //def suffix Filter.  if view cache true, then will auto push view engine .
   route: '/hotstart', //def  　a simple web views．
   tpl: 'jade',  //tpl engine cache. EJS jade only supports .
 }, app));
