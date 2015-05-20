@@ -3,7 +3,7 @@ nodejs http seaver  hot start ! Now , it's a  __express__  middlewares.
 ## install
 `npm install hotstart --save`
 # warn
-___Don't use the app.listen  in app.js.___
+___Don't use the app.listen  in the app.js.___
 # conf
 if you 
 ```javascript
