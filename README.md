@@ -22,6 +22,7 @@ app.use(hotstart({
 //Simple conf.if you used executable's express to create your app.you only set:
 app.use(hotstart({dir:__dirname, tpl:'jade'},app));
 ```
+And open you Browser like: `http://127.0.0.1:3000/hotstart`
 
 #other api 
 difflist and all cechelist.
