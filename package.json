@@ -1,0 +1,28 @@
+{
+  "name": "hotstart",
+  "version": "0.5.0",
+  "main": "hotstart",
+  "keywords": [
+    "hotstart",
+    "hot",
+    "start",
+    "http",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hezedu/hotstart.git"
+  },
+  "author": {
+    "name": "hezedu"
+  },
+  "dependencies": {
+    "sas": "0.1.20"
+  },
+  "licenses": "MIT",
+  "email": "hezedu@hotmail.com",
+  "description": "nodejs http seaver hot start !",
+  "bugs": {
+    "url": "https://github.com/hezedu/hotstart/issues"
+  }
+}
