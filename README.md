@@ -19,7 +19,7 @@ app.use(hotstart({
   tpl: 'jade',  //tpl engine cache. EJS jade only supports .
 }, app));
 
-//if you used executable's express to create your app.you only set:
+//Simple conf.if you used executable's express to create your app.you only set:
 app.use(hotstart({dir:__dirname, tpl:'jade'},app);
 ```
 
