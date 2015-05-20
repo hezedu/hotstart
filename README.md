@@ -12,17 +12,17 @@ var hotstart = require('hotstart');
 
 app.use(hotstart({
   dir: __dirname,  //must
-  handle: '/app.js',  //def the app.js
-  ignore:['/public','/node_modules'], //def ignore dir.if view cache false, then will push view path
-  suffix:['.js'],  //def suffix Filter. if view cache true, then will auto push view engine
-  route: '/hotstart', //def  　a simple web views
-  tpl: 'jade',  //tpl engine cache. EJS jade only supports
+  handle: '/app.js',  // app.js
+  ignore:['/public','/node_modules'], //ignore dir . if view cache is false, then will push view path
+  suffix:['.js'],  //suffix Filter. if view cache is true, then will auto push view engine
+  route: '/hotstart', //a simple web route
+  tpl: 'jade',  //tpl engine cache clear. EJS jade only supports
 }, app));
 
 //Simple conf.if you used executable's express to create your app.you only set:
 app.use(hotstart({dir:__dirname, tpl:'jade'},app));
 ```
-open you Browser like: `http://127.0.0.1:3000/hotstart`
+And then change something, open it in the browser.like: `http://127.0.0.1:3000/hotstart`
 
 #other api 
 difflist and all cechelist.
