@@ -20,7 +20,7 @@ app.use(hotstart({
 }, app));
 
 //Simple conf.if you used executable's express to create your app.you only set:
-app.use(hotstart({dir:__dirname, tpl:'jade'},app);
+app.use(hotstart({dir:__dirname, tpl:'jade'},app));
 ```
 
 #other api 
