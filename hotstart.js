@@ -27,7 +27,7 @@ var hotstart = function hotstart(conf,app) {
       v_cache = require('ejs').cache._data;
       break;
     default:
-      console.error("\u001b[91m hotStart is Temporary support tpl:" + conf.tpl + "\u001b[39m");
+      console.error("\u001b[95m hotStart is Temporary support tpl:" + conf.tpl + "\u001b[39m");
   }
 
   var appSet = app.settings;
@@ -173,8 +173,6 @@ var hotstart = function hotstart(conf,app) {
     return htmlTop + '<div id="list"><div>' + tpl.join('</div><div>') + '</div></div>' + htmlBottm;
   }
 
-  console.log('\u001b[90mhotStart init...\u001b[39m');
-
   var diffList = function(cb) {
     sas([read_dir], {
       iterator: _stat,
@@ -184,7 +182,6 @@ var hotstart = function hotstart(conf,app) {
     });
   }
   diffList(function() {
-    console.log('\u001b[90mhotStart inited\u001b[39m');
   });
   //外部API
   hotstart.diffList = diffList;
