@@ -12,7 +12,12 @@ var path = require('path');
 var hotstart = function hotstart(conf,app) {
   var dir = conf.dir; //目录 必须.
   var dir2 = (dir[dir.length - 1] === '/') ? dir.substr(0, dir.length - 1) : dir; //trim掉后面的/;
-  var ignore = conf.ignore || [dir2 + '/public', dir2 + '/node_modules']; //忽略掉的文件夹
+  var ignore = conf.ignore || ['/public','/node_modules']; //忽略掉的文件夹
+  for(var i = 0,len=ignore.length;i<len;i++){
+    ignore[i] = dir2+ignore[i];
+  };
+
+  //tpl
   var v_cache = {};
   switch (conf.tpl) {
     case 'jade':
@@ -24,6 +29,7 @@ var hotstart = function hotstart(conf,app) {
     default:
       console.error("\u001b[91m hotStart is Temporary support tpl:" + conf.tpl + "\u001b[39m");
   }
+
   var appSet = app.settings;
   var def_suffix = [".js"];
   if (!appSet['view cache']) {
@@ -31,10 +37,8 @@ var hotstart = function hotstart(conf,app) {
   } else {
     def_suffix.push('.' + appSet['view engine']);
   }
-
   var ignore_len = ignore.length;
   var route = conf.route || '/hotstart';
-  var watch = conf.watch || true;
 
 
   conf.suffix = conf.suffix || def_suffix;
