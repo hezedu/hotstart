@@ -5,7 +5,6 @@ nodejs http seaver  hot start ! Now , it's a  __express__  middlewares.
 # warn
 ### Don't use the app.listen  in the app.js.
 # conf
-if you 
 ```javascript
 var express = require('express');
 var app = express();
@@ -20,6 +19,8 @@ app.use(hotstart({
   tpl: 'jade',  //tpl engine cache. EJS jade only supports .
 }, app));
 ```
+if you used executable's express to create your's app.you only set:
+`{dir:__dirname, tpl:'jade'}`
 #other api 
 difflist and all cechelist.
 ```javascript
