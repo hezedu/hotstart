@@ -14,7 +14,7 @@ app.use(hotstart({
   dir: __dirname,  //must
   handle: '/app.js',  // app.js
   ignore:['/public','/node_modules'], //ignore dir . if view cache is false, then will push view path
-  suffix:['.js'],  //suffix Filter. if view cache is true, then will auto push view engine
+  suffix:['.js'],  //suffix Filter. if view cache is true, then will push view engine
   route: '/hotstart', //a simple web route
   tpl: 'jade',  //tpl engine cache clear. EJS jade only supports
 }, app));
