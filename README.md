@@ -13,10 +13,10 @@ var hotstart = require('hotstart');
 app.use(hotstart({
   dir: __dirname,  //must
   handle: '/app.js',  //def the app.js
-  ignore:['/public','/node_modules'], //def ignore dir.  if view cache false, then will push view path .
-  suffix:['.js'],  //def suffix Filter.  if view cache true, then will auto push view engine .
-  route: '/hotstart', //def  　a simple web views．
-  tpl: 'jade',  //tpl engine cache. EJS jade only supports .
+  ignore:['/public','/node_modules'], //def ignore dir.if view cache false, then will push view path
+  suffix:['.js'],  //def suffix Filter. if view cache true, then will auto push view engine
+  route: '/hotstart', //def  　a simple web views
+  tpl: 'jade',  //tpl engine cache. EJS jade only supports
 }, app));
 
 //Simple conf.if you used executable's express to create your app.you only set:
