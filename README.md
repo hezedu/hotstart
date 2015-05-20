@@ -18,9 +18,11 @@ app.use(hotstart({
   route: '/hotstart', //def  　a simple web views．
   tpl: 'jade',  //tpl engine cache. EJS jade only supports .
 }, app));
+
+//if you used executable's express to create your app.you only set:
+app.use(hotstart({dir:__dirname, tpl:'jade'},app);
 ```
-if you used executable's express to create your's app.you only set:
-`{dir:__dirname, tpl:'jade'}`
+
 #other api 
 difflist and all cechelist.
 ```javascript
