@@ -158,7 +158,7 @@ var hotstart = function hotstart(conf,app) {
   var htmlTop = [
     '<html>',
     '<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>',
-    '<body><h1 style="border-bottom:1px solid #666"> diff list <input type="submit" style="color:red" onclick="hotStart(this)" value="Hot Start"/></h1>'
+    '<body><h1 style="border-bottom:1px solid #666"> diff cache list <input type="submit" style="color:red" onclick="hotStart(this)" value="Hot Start"/></h1>'
   ];
   htmlTop = htmlTop.join('');
 
