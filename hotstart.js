@@ -9,7 +9,7 @@ var sas = require('sas');
 var path = require('path');
 
 
-var hotstart = function hotstart(app, conf) {
+var hotstart = function hotstart(conf,app) {
   var dir = conf.dir; //目录 必须.
   var dir2 = (dir[dir.length - 1] === '/') ? dir.substr(0, dir.length - 1) : dir; //trim掉后面的/;
   var ignore = conf.ignore || [dir2 + '/public', dir2 + '/node_modules']; //忽略掉的文件夹
@@ -43,7 +43,6 @@ var hotstart = function hotstart(app, conf) {
   var hashObj = {}; //文件hash缓存
   var difObj = {}; //改变的文件 
   var r_cache = require.cache;
-  console.log(require('ejs').cache)
   var handle = conf.handle || "/app.js";
   handle = dir2 + handle;
   if (process.platform.indexOf('win') !== -1) {
