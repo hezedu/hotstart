@@ -25,7 +25,7 @@ app.use(hotstart({dir:__dirname, tpl:'jade'},app));
 Start you server, And then change something, open it in the browser.like: `http://127.0.0.1:3000/hotstart`
 
 #other api 
-difflist and all cechelist.
+find the difflist and all cechelist.
 ```javascript
 hotstart.diffList(function(difflist,cechelist){
 console.log(difflist);
