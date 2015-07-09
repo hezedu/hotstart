@@ -22,18 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var zupu = require('zupu.js');
-app.use(function(req, res, next) {
-  //console.log(typeof req.socket.server._events.request)
-  //console.log(Object.keys(req.socket.server._events.request));
-  //res.writeHead(200, {'Content-Type': 'text/html'});
-/*  res.writeHead(200, {'Content-Type': 'text/html'});
-  zupu.init(res);
-  res.write(zupu(req));*/
-  res.render('hotstart',{data:zupu(req)});
-  //console.log(req.socket.server._events.request.toString());
-  //next();
-});
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -49,9 +38,7 @@ app.use('/users', users);
 
 
 
-
-
-var hotstart = require('hotstart');
+var hotstart = require('./hotstart');
 
 app.use(hotstart({
   dir: __dirname,  //must
@@ -61,9 +48,6 @@ app.use(hotstart({
   route: '/hotstart', //a simple web route
   tpl: 'jade',  //tpl engine cache clear. EJS jade only supports
 }, app));
-
-//Simple conf.if you used executable's express to create your app.you only set:
-app.use(hotstart({dir:__dirname, tpl:'jade'},app));
 
 
 

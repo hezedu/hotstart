@@ -9,8 +9,6 @@ var sas = require('./sas');
 var path = require('path');
 
 
-console.log(path.resolve())
-
 function hotstart(conf, app) {
   //目录
   var dir = conf.dir;
@@ -21,6 +19,30 @@ function hotstart(conf, app) {
     dir = dir.substr(0, dir.length - 1);
   }
   //目录end.
+
+  //忽略掉的文件夹
+  var staticPath = conf.staticPath || ['/public'];
+  var appIgnore = conf.appIgnore || ['/node_modules'];
+  var len = staticPath.length,app_len = appIgnore.length;
+  for(var i = 0;i<len;i++){
+    var is_same = false;
+    for(var j=0;j<app_len;j++){
+      if(appIgnore[j] === staticPath[i]){
+
+
+      }
+    }
+  }
+  var is_have_static = false,
+    len = appIgnore.length;
+
+  for (var i = 0; i < len; i++) {
+    if (appIgnore[i]){
+
+    }
+
+  }
+
 
   var ignore = conf.ignore || ['/public', '/node_modules']; //忽略掉的文件夹
   for (var i = 0, len = ignore.length; i < len; i++) {
