@@ -7,28 +7,58 @@ var fs = require('fs');
 var crypto = require('crypto');
 var sas = require('./sas');
 var path = require('path');
+var dw = require('dw');
 
+function hotstart(conf) {
+  return new hotstart.min(conf);
 
-console.log(path.resolve())
+}
 
-function hotstart(conf, app) {
-  //目录
-  var dir = conf.dir;
-  if (dir) {
-    dir = path.resolve(dir);
-  } else {
-    dir = require.resolve('hotstart').split('node_modules')[0];
-    dir = dir.substr(0, dir.length - 1);
-  }
-  //目录end.
+//静态方法
+hotstart._dir = function() {
+  var dir = require.resolve('hotstart').split('node_modules')[0];
+  dir = dir.substr(0, dir.length - 1);
+  return dir;
+}
 
-  var ignore = conf.ignore || ['/public', '/node_modules']; //忽略掉的文件夹
-  for (var i = 0, len = ignore.length; i < len; i++) {
-    ignore[i] = dir + ignore[i];
+//hotstart._tpl = fs.readFileSync(require.resolve('tpl.html'), 'utf-8');
+//hotstart._tpl = fs.readFileSync(__dirname + '/tpl.html', 'utf-8');
+
+//min
+hotstart.min = function(conf) {
+  /*****conf*****/
+  this.dir = conf.dir ? path.resolve(dir) : hotstart._dir(); //目录
+  this.staticPath = conf.staticPath || ['/public']; //静态资源目录
+  this.appIgnore = conf.appIgnore || ['/node_modules']; //忽略掉的后端文件夹
+  this.tpl = conf.tpl || 'jade';
+  /*conf init*/
+  for (var i = 0, len = this.staticPath.length; i < len; i++) {
+    this.staticPath[i] = this.dir + this.appIgnore[i];
   };
 
+  for (var i = 0, app_len = this.appIgnore.length; i < app_len; i++) {
+    this.appIgnore[i] = this.dir + this.appIgnore[i];
+  };
+
+  dw.arr_merge(this.appIgnore, this.staticPath);
+}
+
+hotstart.min.prototype.tpl_cache = function(){
+  var cache = {};
+}
+
+
+function hotstart(conf, app) {
+  /*****conf*****/
+  conf.dir = conf.dir ? path.resolve(dir) : hotstart._dir(); //目录
+  conf.staticPath = conf.staticPath || ['/public']; //静态资源目录
+  conf.appIgnore = conf.appIgnore || ['/node_modules']; //忽略掉的后端文件夹
+  conf.tpl = conf.tpl || 'jade';
+
+
+
   //tpl
-  var v_cache = {};
+  
   switch (conf.tpl) {
     case 'jade':
       v_cache = require('jade').cache;
@@ -40,7 +70,10 @@ function hotstart(conf, app) {
       console.error("\u001b[95m hotStart is Temporary support tpl:" + conf.tpl + "\u001b[39m");
   }
 
+
+
   var appSet = app.settings;
+
   var def_suffix = [".js"];
   if (!appSet['view cache']) {
     ignore.push(appSet['views']);
@@ -211,7 +244,8 @@ function hotstart(conf, app) {
     }
   }
 }
-//hotstart._tpl = fs.readFileSync(require.resolve('tpl.html'), 'utf-8');
-hotstart._tpl = fs.readFileSync(__dirname + '/tpl.html', 'utf-8');
+
+
+
 
 module.exports = hotstart;
